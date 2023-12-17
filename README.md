@@ -4,6 +4,8 @@
 
 A set of common implicit animation widgets to expand upon the default flutter animation widgets
 
+Figma Design that defines this component (only accessible for Iconica developers): https://www.figma.com/file/4WkjwynOz5wFeFBRqTHPeP/Iconica-Design-System?type=design&node-id=356%3A3329&mode=design&t=XulkAJNPQ32ARxWh-1
+
 ## Setup
 
 <details>
