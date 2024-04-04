@@ -36,7 +36,7 @@ IconButton(
 ),
 AnimatedNotificationBell(
     notificationCount: notificationCount,
-    notificationIconSize: 50,
+    style: const AnimatedNotificationBellStyle(),
     iterations: notificationCount,
     duration: const Duration(
         milliseconds: 1000,

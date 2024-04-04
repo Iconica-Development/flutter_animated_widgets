@@ -5,11 +5,13 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:flutter_animated_widgets/flutter_animated_widgets.dart';
+
 class AnimatedNotificationBell extends StatefulWidget {
   const AnimatedNotificationBell({
     required this.duration,
     required this.notificationCount,
-    required this.notificationIconSize,
+    required this.style,
     this.iterations = 5,
     super.key,
   }) : assert(
@@ -20,18 +22,15 @@ class AnimatedNotificationBell extends StatefulWidget {
   /// The number shown next to the bell.
   final int notificationCount;
 
-  /// The size of the icon.
-  ///
-  /// Making it small will cause the UI to glitch,
-  /// A minimal size of 50 is recommended
-  final double notificationIconSize;
-
-  /// the total duration of the animation
+  /// The total duration of the animation
   final Duration duration;
 
-  /// the amount of swings of the bell. (default 5)
+  /// Visual customization options.
+  final AnimatedNotificationBellStyle style;
+
+  /// The amount of swings of the bell. (default 5)
   ///
-  /// with a [duration] of 1 second and 2 iterations it will each take 500 ms
+  /// With a [duration] of 1 second and 2 iterations it will each take 500 ms
   /// to complete a swing
   final int iterations;
 
@@ -104,7 +103,7 @@ class _AnimatedNotificationBellState extends State<AnimatedNotificationBell>
         children: [
           Icon(
             Icons.notifications,
-            size: widget.notificationIconSize,
+            size: widget.style.notificationIconSize,
           ),
           if (widget.notificationCount != 0) ...[
             Positioned(
@@ -113,18 +112,14 @@ class _AnimatedNotificationBellState extends State<AnimatedNotificationBell>
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.circle,
-                    color: Color(0xffFB4600),
-                    size: 25,
+                    color: widget.style.amountCircleColor,
+                    size: widget.style.amountCircleSize,
                   ),
                   Text(
                     '${widget.notificationCount}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: widget.style.amountCircleTextStyle,
                     textAlign: TextAlign.center,
                   ),
                 ],
