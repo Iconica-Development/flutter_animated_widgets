@@ -5,3 +5,4 @@
 library flutter_animated_widgets;
 
 export 'src/animated_notification_bell.dart';
+export 'src/models/animated_notification_bell_theme.dart';
