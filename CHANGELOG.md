@@ -1,3 +1,7 @@
+## 0.1.1
+
+* Fixed Animationcontroller dispose error.
+
 ## 0.1.0
 
 * Added styling options to the notifacation bell and adjacent counter.
