@@ -91,8 +91,8 @@ class _AnimatedNotificationBellState extends State<AnimatedNotificationBell>
 
   @override
   void dispose() {
-    super.dispose();
     _notifyBellAnimationController.dispose();
+    super.dispose();
   }
 
   @override
