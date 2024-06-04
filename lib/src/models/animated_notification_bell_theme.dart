@@ -20,6 +20,9 @@ class AnimatedNotificationBellStyle {
   /// The text style of the notification amount.
   final TextStyle amountCircleTextStyle;
 
+  /// The max number of notifications that will be shown. When the amount exceeds this value, this value is shown with a plus behind it.
+  final int maxNotificationNumber;
+
   const AnimatedNotificationBellStyle({
     this.notificationIconSize = 50,
     this.bellColor = Colors.black,
@@ -30,5 +33,6 @@ class AnimatedNotificationBellStyle {
       fontSize: 14,
       fontWeight: FontWeight.w700,
     ),
+    this.maxNotificationNumber = 99,
   });
 }
