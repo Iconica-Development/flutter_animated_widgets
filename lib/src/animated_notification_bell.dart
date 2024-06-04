@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -109,20 +110,31 @@ class _AnimatedNotificationBellState extends State<AnimatedNotificationBell>
             Positioned(
               bottom: 7,
               right: 7,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Icon(
-                    Icons.circle,
-                    color: widget.style.amountCircleColor,
-                    size: widget.style.amountCircleSize,
-                  ),
-                  Text(
-                    '${widget.notificationCount}',
-                    style: widget.style.amountCircleTextStyle,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+              child: SizedBox(
+                height: widget.style.amountCircleSize,
+                width: widget.style.amountCircleSize,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Icon(
+                      Icons.circle,
+                      color: widget.style.amountCircleColor,
+                      size: widget.style.amountCircleSize,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: AutoSizeText(
+                        widget.notificationCount >
+                                widget.style.maxNotificationNumber
+                            ? '${widget.style.maxNotificationNumber}+'
+                            : '${widget.notificationCount}',
+                        style: widget.style.amountCircleTextStyle,
+                        textAlign: TextAlign.center,
+                        minFontSize: 4,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           ],

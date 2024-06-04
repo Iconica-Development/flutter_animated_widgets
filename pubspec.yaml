@@ -1,12 +1,13 @@
 name: flutter_animated_widgets
 description: A set of commonly used specific implicit animated widgets as addition on top of the default animated widgets
-version: 0.1.1
+version: 0.2.0
 
 environment:
   sdk: ">=2.18.4 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
+  auto_size_text: ^3.0.0
   flutter:
     sdk: flutter
 
