@@ -1,6 +1,6 @@
 name: flutter_animated_widgets
 description: A set of commonly used specific implicit animated widgets as addition on top of the default animated widgets
-version: 0.2.0
+version: 0.3.0
 
 environment:
   sdk: ">=2.18.4 <3.0.0"
@@ -14,6 +14,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_iconica_analysis:
+    git:
+      url: https://github.com/Iconica-Development/flutter_iconica_analysis
+      ref: 7.0.0
 
 flutter:
