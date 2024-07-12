@@ -3,18 +3,18 @@ import "package:flutter/material.dart";
 /// A class that defines the style for the animated notification bell.
 class AnimatedNotificationBellStyle {
   const AnimatedNotificationBellStyle({
-    this.notificationIconSize = 50,
+    this.notificationIconSize = 40,
     this.bellColor = Colors.black,
-    this.amountCircleColor = Colors.red,
-    this.amountCircleSize = 25,
+    this.amountCircleColor = const Color(0xFF71C6D1),
+    this.amountCircleSize = 15,
     this.amountCircleTextStyle = const TextStyle(
       color: Colors.white,
       fontSize: 14,
       fontWeight: FontWeight.w700,
     ),
     this.maxNotificationNumber = 99,
-    this.notificationIcon = Icons.notifications,
-    this.showNotificationCount = true,
+    this.notificationIcon = Icons.notifications_none_outlined,
+    this.showNotificationCount = false,
   });
 
   /// The size of the icon.

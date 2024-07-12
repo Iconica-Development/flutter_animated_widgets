@@ -1,3 +1,8 @@
+## 0.3.1
+
+* Change default style
+* Fixed issue where the notification bell showed that there are unread notifications when there are none.
+
 ## 0.3.0
 
 * Added the option to choose the icon for the notification bell.

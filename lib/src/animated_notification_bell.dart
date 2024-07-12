@@ -105,61 +105,51 @@ class _AnimatedNotificationBellState extends State<AnimatedNotificationBell>
               widget.style.notificationIcon,
               size: widget.style.notificationIconSize,
             ),
-            if (widget.style.showNotificationCount) ...[
-              if (widget.notificationCount != 0) ...[
+            if (widget.notificationCount != 0) ...[
+              if (widget.style.showNotificationCount) ...[
                 Positioned(
-                  bottom: 7,
-                  right: 7,
-                  child: SizedBox(
-                    height: widget.style.amountCircleSize,
-                    width: widget.style.amountCircleSize,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Icon(
-                          Icons.circle,
-                          color: widget.style.amountCircleColor,
-                          size: widget.style.amountCircleSize,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
-                          child: AutoSizeText(
-                            widget.notificationCount >
-                                    widget.style.maxNotificationNumber
-                                ? "${widget.style.maxNotificationNumber}+"
-                                : "${widget.notificationCount}",
-                            style: widget.style.amountCircleTextStyle,
-                            textAlign: TextAlign.center,
-                            minFontSize: 4,
-                          ),
-                        ),
-                      ],
+                  right: 4,
+                  top: 4,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: widget.style.amountCircleColor,
+                      shape: BoxShape.circle,
+                    ),
+                    constraints: BoxConstraints(
+                      maxWidth: widget.style.amountCircleSize,
+                      maxHeight: widget.style.amountCircleSize,
+                    ),
+                    child: Center(
+                      child: AutoSizeText(
+                        widget.notificationCount >
+                                widget.style.maxNotificationNumber
+                            ? "${widget.style.maxNotificationNumber}+"
+                            : "${widget.notificationCount}",
+                        style: widget.style.amountCircleTextStyle,
+                        textAlign: TextAlign.center,
+                        minFontSize: 4,
+                      ),
+                    ),
+                  ),
+                ),
+              ] else ...[
+                Positioned(
+                  right: 4,
+                  top: 4,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: widget.style.amountCircleColor,
+                      shape: BoxShape.circle,
+                    ),
+                    constraints: BoxConstraints(
+                      maxWidth: widget.style.amountCircleSize,
+                      maxHeight: widget.style.amountCircleSize,
                     ),
                   ),
                 ),
               ],
-            ] else ...[
-              Positioned(
-                top: 4,
-                right: 4,
-                child: SizedBox(
-                  height: widget.style.amountCircleSize,
-                  width: widget.style.amountCircleSize,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Container(
-                        height: widget.style.amountCircleSize,
-                        width: widget.style.amountCircleSize,
-                        decoration: BoxDecoration(
-                          color: widget.style.amountCircleColor,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             ],
           ],
         ),
