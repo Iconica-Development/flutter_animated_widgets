@@ -1,3 +1,13 @@
+## 0.3.1
+
+* Change default style
+* Fixed issue where the notification bell showed that there are unread notifications when there are none.
+
+## 0.3.0
+
+* Added the option to choose the icon for the notification bell.
+* Added option to only show a circle on the notification bell when there are notifications.
+
 ## 0.2.0
 
 * Added a maximum number for the amount of notifications to show on top of the notification. if exceeded then the max number is shown with a 'plus' behind it.

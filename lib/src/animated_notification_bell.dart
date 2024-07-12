@@ -2,11 +2,11 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import 'dart:math' as math;
+import "dart:math" as math;
 
-import 'package:flutter_animated_widgets/flutter_animated_widgets.dart';
+import "package:auto_size_text/auto_size_text.dart";
+import "package:flutter/material.dart";
+import "package:flutter_animated_widgets/flutter_animated_widgets.dart";
 
 class AnimatedNotificationBell extends StatefulWidget {
   const AnimatedNotificationBell({
@@ -17,7 +17,7 @@ class AnimatedNotificationBell extends StatefulWidget {
     super.key,
   }) : assert(
           iterations > 0,
-          'Iterations needs to be above 0',
+          "Iterations needs to be above 0",
         );
 
   /// The number shown next to the bell.
@@ -97,56 +97,68 @@ class _AnimatedNotificationBellState extends State<AnimatedNotificationBell>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _notifyBellAnimation,
-      child: Stack(
-        children: [
-          Icon(
-            Icons.notifications,
-            size: widget.style.notificationIconSize,
-          ),
-          if (widget.notificationCount != 0) ...[
-            Positioned(
-              bottom: 7,
-              right: 7,
-              child: SizedBox(
-                height: widget.style.amountCircleSize,
-                width: widget.style.amountCircleSize,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Icon(
-                      Icons.circle,
+  Widget build(BuildContext context) => AnimatedBuilder(
+        animation: _notifyBellAnimation,
+        child: Stack(
+          children: [
+            Icon(
+              widget.style.notificationIcon,
+              size: widget.style.notificationIconSize,
+            ),
+            if (widget.notificationCount != 0) ...[
+              if (widget.style.showNotificationCount) ...[
+                Positioned(
+                  right: 4,
+                  top: 4,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
                       color: widget.style.amountCircleColor,
-                      size: widget.style.amountCircleSize,
+                      shape: BoxShape.circle,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                    constraints: BoxConstraints(
+                      maxWidth: widget.style.amountCircleSize,
+                      maxHeight: widget.style.amountCircleSize,
+                    ),
+                    child: Center(
                       child: AutoSizeText(
                         widget.notificationCount >
                                 widget.style.maxNotificationNumber
-                            ? '${widget.style.maxNotificationNumber}+'
-                            : '${widget.notificationCount}',
+                            ? "${widget.style.maxNotificationNumber}+"
+                            : "${widget.notificationCount}",
                         style: widget.style.amountCircleTextStyle,
                         textAlign: TextAlign.center,
                         minFontSize: 4,
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            )
+              ] else ...[
+                Positioned(
+                  right: 4,
+                  top: 4,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: widget.style.amountCircleColor,
+                      shape: BoxShape.circle,
+                    ),
+                    constraints: BoxConstraints(
+                      maxWidth: widget.style.amountCircleSize,
+                      maxHeight: widget.style.amountCircleSize,
+                    ),
+                  ),
+                ),
+              ],
+            ],
           ],
-        ],
-      ),
-      builder: (context, child) => Transform.rotate(
-        alignment: Alignment.topCenter,
-        angle: _notifyBellAnimation.value,
-        child: child,
-      ),
-    );
-  }
+        ),
+        builder: (context, child) => Transform.rotate(
+          alignment: Alignment.topCenter,
+          angle: _notifyBellAnimation.value,
+          child: child,
+        ),
+      );
 
   @override
   void didUpdateWidget(covariant AnimatedNotificationBell oldWidget) {

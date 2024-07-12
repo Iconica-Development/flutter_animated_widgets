@@ -1,7 +1,22 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 /// A class that defines the style for the animated notification bell.
 class AnimatedNotificationBellStyle {
+  const AnimatedNotificationBellStyle({
+    this.notificationIconSize = 40,
+    this.bellColor = Colors.black,
+    this.amountCircleColor = const Color(0xFF71C6D1),
+    this.amountCircleSize = 15,
+    this.amountCircleTextStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
+    ),
+    this.maxNotificationNumber = 99,
+    this.notificationIcon = Icons.notifications_none_outlined,
+    this.showNotificationCount = false,
+  });
+
   /// The size of the icon.
   ///
   /// Making it small will cause the UI to glitch,
@@ -20,19 +35,13 @@ class AnimatedNotificationBellStyle {
   /// The text style of the notification amount.
   final TextStyle amountCircleTextStyle;
 
-  /// The max number of notifications that will be shown. When the amount exceeds this value, this value is shown with a plus behind it.
+  /// The max number of notifications that will be shown. When the amount
+  /// exceeds this value, this value is shown with a plus behind it.
   final int maxNotificationNumber;
 
-  const AnimatedNotificationBellStyle({
-    this.notificationIconSize = 50,
-    this.bellColor = Colors.black,
-    this.amountCircleColor = Colors.red,
-    this.amountCircleSize = 25,
-    this.amountCircleTextStyle = const TextStyle(
-      color: Colors.white,
-      fontSize: 14,
-      fontWeight: FontWeight.w700,
-    ),
-    this.maxNotificationNumber = 99,
-  });
+  /// The icon that will be shown in the notification bell.
+  final IconData notificationIcon;
+
+  /// Whether the notification count should be shown.
+  final bool showNotificationCount;
 }
