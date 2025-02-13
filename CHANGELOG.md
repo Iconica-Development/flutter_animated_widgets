@@ -1,3 +1,6 @@
+## 0.3.2
+* Ready package for publishing to https://forgejo.internal.iconica.nl/api/packages/internal/pub
+
 ## 0.3.1
 
 * Change default style
